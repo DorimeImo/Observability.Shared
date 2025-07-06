@@ -1,0 +1,13 @@
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\bin\Release\net8.0\Observability.Shared.deps.json
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\bin\Release\net8.0\Observability.Shared.dll
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\bin\Release\net8.0\Observability.Shared.pdb
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\Observability.Shared.csproj.AssemblyReference.cache
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\Observability.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\Observability.Shared.AssemblyInfoInputs.cache
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\Observability.Shared.AssemblyInfo.cs
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\Observability.Shared.csproj.CoreCompileInputs.cache
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\Observability.Shared.sourcelink.json
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\Observability.Shared.dll
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\refint\Observability.Shared.dll
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\Observability.Shared.pdb
+C:\Users\dmitr\source\repos\Projects\SharedLibraries\Observability.Shared\Observability.Shared\obj\Release\net8.0\ref\Observability.Shared.dll
