@@ -46,14 +46,14 @@ namespace Observability.Shared.DefaultImplementations
             ctx.Level = level;
 
             _logger
-                .ForContext("CorrelationId", ctx.CorrelationId)
-                .ForContext("TraceId", ctx.TraceId)
-                .ForContext("Source", ctx.Source)
-                .ForContext("Operation", ctx.Operation)
-                .ForContext("UserId", ctx.UserId)
-                .ForContext("SessionId", ctx.SessionId)
-                .ForContext("Timestamp", ctx.Timestamp)
-                .ForContext("Level", ctx.Level)
+                .ForContext("CorrelationId", ctx.CorrelationId ?? "N/A")
+                .ForContext("TraceId", ctx.TraceId ?? "N/A")
+                .ForContext("Source", ctx.Source ?? "N/A")
+                .ForContext("Operation", ctx.Operation ?? "N/A")
+                .ForContext("UserId", ctx.UserId ?? "N/A")
+                .ForContext("SessionId", ctx.SessionId ?? "N/A")
+                .ForContext("Timestamp", ctx.Timestamp ?? DateTimeOffset.MinValue)
+                .ForContext("Level", ctx.Level ?? AppLogLevel.None)
                 .Write(MapLevel(level), ex, "{Message}", message);
         }
 

@@ -1,0 +1,39 @@
+name: Build, Test, Pack, and Publish NuGet Package
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-pack-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout code
+    - uses: actions/checkout@v4
+
+    # Install .NET SDK
+    - uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    # Restore dependencies
+    - run: dotnet restore
+
+    # Build in Release mode
+    - run: dotnet build --configuration Release --no-restore
+
+    # Run tests
+    - run: dotnet test --no-restore --verbosity normal
+
+    # Pack the NuGet package
+    - run: dotnet pack --configuration Release --no-build --output ./nupkg
+
+    # Publish to nuget.org (only on push to main)
+    - name: Push NuGet package
+      if: github.ref == 'refs/heads/main'
+      run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_OBSERVABILITY_API_KEY }} --source https://api.nuget.org/v3/index.json

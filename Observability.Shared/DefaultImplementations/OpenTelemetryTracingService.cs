@@ -34,6 +34,7 @@ namespace Observability.Shared.DefaultImplementations
             if (activity != null)
             {
                 _logger.Current.TraceId = activity.TraceId.ToString();
+                _logger.Current.CorrelationId = _logger.Current.TraceId;
             }
             else
             {
