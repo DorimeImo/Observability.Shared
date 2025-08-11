@@ -56,7 +56,7 @@ namespace Observability.Shared.Tests
             using var activity = new ActivitySource("TestSource").StartActivity("TestOperation");
 
             // Act
-            service.ExtractTraceIdToLogContext("TestOperation");
+            service.ExtractTraceIdToLogContext();
 
             // Assert
             loggerMock.VerifyGet(l => l.Current, Times.AtLeastOnce());
@@ -77,7 +77,7 @@ namespace Observability.Shared.Tests
             var service = new OpenTelemetryTracingService("TestSource", loggerMock.Object);
 
             // Act
-            service.ExtractTraceIdToLogContext("TestOperation");
+            service.ExtractTraceIdToLogContext();
 
             // Assert
             loggerMock.Verify(l =>

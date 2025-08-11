@@ -25,7 +25,7 @@ namespace Observability.Shared.DefaultImplementations
             _logger = structuredLogger;
         }
 
-        public void ExtractTraceIdToLogContext(string operationName)
+        public void ExtractTraceIdToLogContext()
         {
             var (source, operation) = CallerInfo.GetCallerClassAndMethod();
 
