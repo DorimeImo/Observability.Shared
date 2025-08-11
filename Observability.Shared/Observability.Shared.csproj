@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>DorimeImo.Observability.Shared</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Authors>DorimeImo</Authors>
     <Description>Shared observability contracts and implementations for .NET microservices.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
