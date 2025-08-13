@@ -50,7 +50,6 @@ namespace Observability.Shared.DefaultImplementations
                 .ForContext("TraceId", ctx.TraceId ?? "N/A")
                 .ForContext("Source", ctx.Source ?? "N/A")
                 .ForContext("Operation", ctx.Operation ?? "N/A")
-                .ForContext("UserId", ctx.UserId ?? "N/A")
                 .ForContext("SessionId", ctx.SessionId ?? "N/A")
                 .ForContext("Timestamp", ctx.Timestamp ?? DateTimeOffset.MinValue)
                 .ForContext("Level", ctx.Level ?? AppLogLevel.None)

@@ -64,7 +64,6 @@ namespace Observability.Shared.Tests
             {
                 CorrelationId = "corr-id",
                 TraceId = "trace-id",
-                UserId = "user-id",
                 SessionId = "session-id"
             };
             logger.Set(context);
@@ -75,7 +74,6 @@ namespace Observability.Shared.Tests
             // Assert: Verify ForContext calls
             serilogMock.Verify(l => l.ForContext("CorrelationId", "corr-id", false), Times.Once);
             serilogMock.Verify(l => l.ForContext("TraceId", "trace-id", false), Times.Once);
-            serilogMock.Verify(l => l.ForContext("UserId", "user-id", false), Times.Once);
             serilogMock.Verify(l => l.ForContext("SessionId", "session-id", false), Times.Once);
             serilogMock.Verify(l =>
                 l.Write<string>(
