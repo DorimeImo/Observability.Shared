@@ -8,7 +8,7 @@ namespace Observability.Shared.Contracts
 {
     public interface ITracingService
     {
-        void ExtractTraceIdToLogContext();
+        void CorrelateActivityAndLogger();
         IDisposable? StartActivity(string operationName);
     }
 }

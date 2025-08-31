@@ -18,14 +18,14 @@ namespace Observability.Shared.DefaultImplementations
         private readonly IStructuredLogger _logger;
 
         public OpenTelemetryTracingService(
-            string activitySourceName,
+            ActivitySource activitySource,
             IStructuredLogger structuredLogger)
         {
-            _activitySource = new ActivitySource(activitySourceName);
+            _activitySource = activitySource;
             _logger = structuredLogger;
         }
 
-        public void ExtractTraceIdToLogContext()
+        public void CorrelateActivityAndLogger()
         {
             var (source, operation) = CallerInfo.GetCallerClassAndMethod();
 

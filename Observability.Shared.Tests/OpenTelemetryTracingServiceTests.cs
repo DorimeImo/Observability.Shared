@@ -13,6 +13,8 @@ namespace Observability.Shared.Tests
 {
     public class OpenTelemetryTracingServiceTests
     {
+        private ActivitySource Source { get; }
+
         public OpenTelemetryTracingServiceTests()
         {
             ActivitySource.AddActivityListener(new ActivityListener
@@ -22,6 +24,8 @@ namespace Observability.Shared.Tests
                 ActivityStarted = _ => { },
                 ActivityStopped = _ => { }
             });
+
+            Source = new ActivitySource("TestSource");
         }
 
         // -----------------------------------------
@@ -33,7 +37,7 @@ namespace Observability.Shared.Tests
         {
             // Arrange
             var loggerMock = new Mock<IStructuredLogger>();
-            var service = new OpenTelemetryTracingService("TestSource", loggerMock.Object);
+            var service = new OpenTelemetryTracingService(Source, loggerMock.Object);
 
             // Act
             using var activity = service.StartActivity("TestOperation");
@@ -51,12 +55,12 @@ namespace Observability.Shared.Tests
             var loggerMock = new Mock<IStructuredLogger>();
             loggerMock.Setup(l => l.Current).Returns(new LogContext());
 
-            var service = new OpenTelemetryTracingService("TestSource", loggerMock.Object);
+            var service = new OpenTelemetryTracingService(Source, loggerMock.Object);
 
             using var activity = new ActivitySource("TestSource").StartActivity("TestOperation");
 
             // Act
-            service.ExtractTraceIdToLogContext();
+            service.CorrelateActivityAndLogger();
 
             // Assert
             loggerMock.VerifyGet(l => l.Current, Times.AtLeastOnce());
@@ -74,10 +78,10 @@ namespace Observability.Shared.Tests
         {
             // Arrange
             var loggerMock = new Mock<IStructuredLogger>();
-            var service = new OpenTelemetryTracingService("TestSource", loggerMock.Object);
+            var service = new OpenTelemetryTracingService(Source, loggerMock.Object);
 
             // Act
-            service.ExtractTraceIdToLogContext();
+            service.CorrelateActivityAndLogger();
 
             // Assert
             loggerMock.Verify(l =>
@@ -93,8 +97,9 @@ namespace Observability.Shared.Tests
         public void StartActivity_ShouldLogWarning_WhenActivityIsNull()
         {
             // Arrange
+            using var unobserved = new ActivitySource("UnobservedSource");
             var loggerMock = new Mock<IStructuredLogger>();
-            var service = new OpenTelemetryTracingService("TestSourceWithoutListener", loggerMock.Object);
+            var service = new OpenTelemetryTracingService(unobserved, loggerMock.Object);
 
             // Act
             using var activity = service.StartActivity("TestOperation");
